@@ -1,0 +1,96 @@
+<ion-content [fullscreen]="true">
+  <ion-list class="receive-main-container">
+    <ion-grid class="receive-main-grid">
+      <ion-row class="receive-main-row">
+
+        <!-- Left Column -->
+        <ion-col class="receive-main-col" sizeLg="6" sizeXl="6" sizeMd="6" sizeSm="12" sizeXs="12">
+          <!-- left-col-header-area -->
+          <div class="receive-col-header">
+            <div class="left-side">
+              <div class="img-header">
+                <img src="../../assets/card1.png" alt="header image">
+              </div>
+              <div class="info-header">
+                <h4>To Receive</h4>
+                <p>My Order</p>
+              </div>
+            </div>
+            <div class="right-side">
+              <div class="icon-row">
+                <div class="icon-container">
+                  <ion-icon name="wallet-outline"></ion-icon>
+                </div>
+                <div class="icon-container">
+                  <ion-icon name="menu-outline"></ion-icon>
+                </div>
+                <div class="icon-container">
+                  <ion-icon name="settings-outline"></ion-icon>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Left Column Orders -->
+          <ion-list class="order-area" *ngFor="let order of leftOrders">
+            <div class="order-img-container">
+              <img *ngFor="let img of order.images" [src]="img" alt="order image">
+            </div>
+            <div class="info-order-container">
+              <div class="order-num-item">
+                <div class="num-type">
+                  <p>{{ order.orderNumber }}</p>
+                  <p>{{ order.deliveryType }}</p>
+                </div>
+                <p class="num-item">{{ order.itemCount }} item</p>
+              </div>
+              <div class="btn-order">
+                <p>{{ order.status }}</p>
+                <button *ngIf="order.status === 'Packed' || order.status === 'Shipped'"
+                  (click)="goToNewPage('')">Track</button>
+                <div *ngIf="order.status === 'Delivered'">
+                  <ion-list>
+                    <p>Delivered</p>
+                    <ion-checkbox slot="start" [checked]="true" class="rounded-checkbox"></ion-checkbox>
+                  </ion-list>
+                  <button (click)="goToNewPage('/')">Review</button>
+                </div>
+              </div>
+            </div>
+          </ion-list>
+        </ion-col>
+
+        <!-- Right Column -->
+        <ion-col class="receive-main-col" sizeLg="6" sizeXl="6" sizeMd="6" sizeSm="12" sizeXs="12">
+          <!-- Right Column Orders -->
+          <ion-list class="order-area" *ngFor="let order of rightOrders">
+            <div class="order-img-container">
+              <img *ngFor="let img of order.images" [src]="img" alt="order image">
+            </div>
+            <div class="info-order-container">
+              <div class="order-num-item">
+                <div class="num-type">
+                  <p>{{ order.orderNumber }}</p>
+                  <p>{{ order.deliveryType }}</p>
+                </div>
+                <p class="num-item">{{ order.itemCount }} item</p>
+              </div>
+              <div class="btn-order">
+                <ion-list>
+                  <p>{{ order.status }}</p>
+                  <ion-checkbox slot="start" [checked]="true" class="rounded-checkbox"></ion-checkbox>
+                </ion-list>
+                <button *ngIf="order.status === 'Packed' || order.status === 'Shipped'"
+                  (click)="goToNewPage('/')">Track</button>
+                <div *ngIf="order.status === 'Delivered'">
+                  <button (click)="goToNewPage('/')">Review</button>
+                </div>
+              </div>
+            </div>
+          </ion-list>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+</ion-content>

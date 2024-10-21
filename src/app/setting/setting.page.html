@@ -1,0 +1,31 @@
+<ion-content [fullscreen]="true">
+  <ion-list class="setting-main-container">
+    <div class="setting-header">
+      <h1>Settings</h1>
+      <p>You Profile</p>
+    </div>
+
+    <div class="setting-img-container">
+      <div class="img-box-round" (click)="presentActionSheet()">
+        <img [src]="profileImage" [attr.data-unique]="uniqueId" class="profile-image">
+      </div>
+      <ion-icon class="edit-icon" name="pencil" (click)="presentActionSheet()"></ion-icon>
+    </div>
+
+    <div class="setting-input-container">
+      <div class="inputs-control">
+        <input type="text" placeholder="Enter Name">
+        <input type="email" name="email" placeholder="Enter Email">
+        <input type="password" name="password" placeholder="Enter Password">
+      </div>
+
+    </div>
+
+    <div class="btn-container-setting">
+      <div class="btn-control-btn">
+        <button (click)="onSaveChanges()">{{ buttonText }}</button>
+      </div>
+    </div>
+
+  </ion-list>
+</ion-content>

@@ -1,0 +1,83 @@
+<ion-content [fullscreen]="true">
+  <ion-list class="cart-main-container">
+    <ion-grid class="cart-main-grid">
+      <ion-row class="cart-main-row">
+        <ion-col class="cart-main-col" sizeLg="6" sizeXl="6" sizeMd="6" sizeSm="12" sizeXs="12">
+          <!-- header-section -->
+          <div class="header">
+            <h2 class="cart-text">
+              Cart
+              <span class="cart-badge">{{ products.length }}</span>
+            </h2>
+          </div>
+          <!-- address-area -->
+          <div class="address-area">
+            <ion-card>
+              <ion-grid class="address-container">
+                <ion-row>
+                  <ion-col size="10">
+                    <h2>Shipping Address</h2>
+                    <p>26, Duong So 2, Thao Dien Ward, An Phu, District 2, Ho Chi Minh city</p>
+                  </ion-col>
+                  <ion-col size="2" class="edit-icon">
+                    <ion-button fill="clear">
+                      <ion-icon name="pencil" style="color: white;"></ion-icon>
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </div>
+          <!-- product-cart -->
+          <div class="select-product-container">
+            <div *ngFor="let product of products" class="img-box-details">
+              <div class="img">
+                <img [src]="product.image" alt="">
+                <ion-icon name="trash-outline" (click)="removeProduct(product)"></ion-icon>
+              </div>
+
+              <div class="product-img-details">
+                <p>{{ product.description }}</p>
+                <p>{{ product.color }}, Size {{ product.size }}</p>
+
+                <ion-item lines="none">
+                  <ion-label>Price: ${{ product.price.toFixed(2) }}</ion-label>
+                  <div class="quantity-selector">
+                    <ion-button fill="clear" (click)="decrement(product)">
+                      <ion-icon name="remove-circle-outline"></ion-icon>
+                    </ion-button>
+                    <ion-input type="number" [(ngModel)]="product.quantity" readonly></ion-input>
+                    <ion-button fill="clear" (click)="increment(product)">
+                      <ion-icon name="add-circle-outline"></ion-icon>
+                    </ion-button>
+                  </div>
+                </ion-item>
+                <p>Total Price: ${{ product.totalPrice.toFixed(2) }}</p>
+              </div>
+            </div>
+          </div>
+        </ion-col>
+
+        <ion-col class="cart-main-col" sizeLg="6" sizeXl="6" sizeMd="6" sizeSm="12" sizeXs="12">
+          <div class="product-charges-container">
+            <div class="sub-total">
+              <p>Sub Total</p>
+              <p>${{ subtotal.toFixed(2) }}</p>
+            </div>
+
+            <div class="delivery">
+              <p>Delivery</p>
+              <p>${{ deliveryCharges.toFixed(2) }}</p>
+            </div>
+
+            <div class="total-charges">
+              <p>Total</p>
+              <p>${{ total.toFixed(2) }}</p>
+            </div>
+            <ion-button (click)="goToNextPage()" expand="block">Check out</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+</ion-content>

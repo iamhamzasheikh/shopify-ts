@@ -1,1 +1,1 @@
-# shopify-ts
+# shopify-ionic-app

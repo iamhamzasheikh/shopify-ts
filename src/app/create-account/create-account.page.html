@@ -1,0 +1,44 @@
+<ion-content [fullscreen]="true">
+  <ion-list class="create-account-main-container">
+    <!-- upper-section -->
+    <ion-list class="upper-section">
+      <img class="bubble-left" src="/assets/bubble02.png" alt="bubble-left">
+      <h1>Create Account</h1>
+      <img class="bubble-blue-right" src="/assets/bubble-blue-right.png" alt="bubble-blue-right">
+      <img class="uplord-img" src="/assets/Upload-Photo.png" alt="uplord-img">
+    </ion-list>
+
+    <!-- bottom-section -->
+    <ion-list class="bottom-section">
+      <div class="inputs-container">
+        <input type="email" name="email" id="email" placeholder="Enter your Email" [(ngModel)]="email"
+          (input)="checkButtonState()">
+        <div class="password-container">
+          <input [type]="showPassword ? 'text' : 'password'" name="password" id="password"
+            placeholder="Enter your password" [(ngModel)]="password" (input)="checkPasswordStrength()">
+          <ion-icon [name]="showPassword ? 'eye-off' : 'eye'" (click)="togglePasswordVisibility()"
+            class="password-visibility-icon"></ion-icon>
+        </div>
+        <div class="password-strength-indicator">
+          <div [class]="'strength-bar ' + passwordStrength"></div>
+          <span class="strength-text">{{passwordStrengthText}}</span>
+        </div>
+        <ul class="password-requirements">
+          <li [class.met]="hasMinLength">At least 8 characters</li>
+          <li [class.met]="hasLetter">Contains a letter</li>
+          <li [class.met]="hasNumber">Contains a number</li>
+          <li [class.met]="hasSpecialChar">Contains a special character</li>
+        </ul>
+      </div>
+
+      <!-- submit-btn-container -->
+      <div class="submit-cancel-btn-container">
+        <button expand="full" [disabled]="isButtonDisabled" (click)="displayInputValues()"
+          [ngClass]="{'button-enabled': !isButtonDisabled, 'button-disabled': isButtonDisabled}">
+          {{ buttonText }}
+        </button>
+        <p class="cancel">Cancel</p>
+      </div>
+    </ion-list>
+  </ion-list>
+</ion-content>

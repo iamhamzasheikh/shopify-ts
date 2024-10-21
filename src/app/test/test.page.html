@@ -1,0 +1,74 @@
+<ion-content [fullscreen]="true">
+  <h1>Hello test page</h1>
+
+  <!-- Action-button -->
+  <ion-button (click)="setOpen(true)">Action Sheet</ion-button>
+  <ion-action-sheet> 
+    [isOpen]="false" <!-- Change this to a local variable or remove -->
+    header="Actions"
+    [buttons]="[]" <!-- Remove alertService.actionSheetButtons -->
+    (didDismiss)="setOpen(false)"
+  >
+  </ion-action-sheet>
+
+  <!-- Alert -->
+  <ion-button id="present-alert">Alert</ion-button>
+  <ion-alert>
+    trigger="present-alert" 
+    header="Alert!" 
+    [buttons]="[]" <!-- Remove alertService.alertButtons -->
+    cssClass="alert-class"
+    (didDismiss)="setResult($event)"
+  >
+  </ion-alert>
+
+  <!-- Popover -->
+  <ion-button id="trigger-button">Click Me</ion-button>
+  <ion-popover trigger="trigger-button">
+    <ng-template>
+      <ion-content class="ion-padding">Hello Styled World!</ion-content>
+    </ng-template>
+  </ion-popover>
+
+  <!-- Toast -->
+  <ion-button id="open-toast">Open Toast</ion-button>
+  <ion-toast> 
+    trigger="open-toast" 
+    [duration]="3000" 
+    message="Hello Styled World!" 
+    class="custom-toast"
+    [buttons]="[]" <!-- Remove alertService.getToastButtons() -->
+  >
+  </ion-toast>
+
+  <!-- segments -->
+
+  
+  <div class="custom-segment">
+    <button 
+      class="segment-button" 
+      [class.active]="activeSegment === 'default'" 
+      (click)="selectSegment('default')">
+      Default
+    </button>
+    <button 
+      class="segment-button" 
+      [class.active]="activeSegment === 'segment'" 
+      (click)="selectSegment('segment')">
+      Segment
+    </button>
+  </div>
+  
+  <div class="segment-content">
+    <div *ngIf="activeSegment === 'default'">
+      <!-- Content for Default -->
+      <p>This is Default content.</p>
+    </div>
+    <div *ngIf="activeSegment === 'segment'">
+      <!-- Content for Segment -->
+      <p>This is Segment content.</p>
+    </div>
+  </div>
+  
+
+</ion-content>

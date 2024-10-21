@@ -1,0 +1,81 @@
+ion-popover {
+    --background: rgba(40, 173, 218, 0.6);
+    --backdrop-opacity: 0.6;
+    --box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.6);
+    --color: white;
+    --width: 300px;
+  }
+  
+  ion-popover ion-content {
+    --background: rgba(40, 173, 218, 0.6);
+  }
+  
+  ion-popover::part(backdrop) {
+    background-color: rgb(6, 14, 106);
+  }
+
+
+  ion-toast.custom-toast {
+    --background: #f4f4fa;
+    --box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+    --color: #4b4a50;
+  }
+  
+  ion-toast.custom-toast::part(message) {
+    font-style: italic;
+  }
+  
+  ion-toast.custom-toast::part(button) {
+    border-left: 1px solid #d2d2d2;
+    color: #030207;
+    font-size: 15px;
+  }
+
+
+ // alert.component.scss
+
+
+//  segments-css
+
+.custom-segment {
+  display: flex;
+  border: 1px solid #e0e0e0;
+  border-radius: 25px; /* To give rounded corners */
+  overflow: hidden;
+  width: 50%;
+}
+
+.segment-button {
+  padding: 10px 30px;
+  border: none;
+  background-color: #f7f7f7;
+  cursor: pointer;
+  flex: 1;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.segment-button.active {
+  background-color: white; /* Active background */
+  color: black; /* Active text color */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.segment-button:not(.active) {
+  background-color: #f0f0f0; /* Inactive background */
+  color: #555; /* Inactive text color */
+}
+
+.custom-segment .segment-button:first-child {
+  border-radius: 25px 0 0 25px; /* Round the left side of the first button */
+}
+
+.custom-segment .segment-button:last-child {
+  border-radius: 0 25px 25px 0; /* Round the right side of the last button */
+}
+
+.segment-content {
+  margin-top: 20px;
+}
+
+
